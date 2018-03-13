@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <form method="post" action="/edit_task">
+        <table align="center">
+            <tr>
+                <td>
+                    <div>
+                        <label>Task ID:</label>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label>Task Name:</label>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label>Task Description:</label>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label>Start Date:</label>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label>End date:</label>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label>Owner </label>
+                    </div>
+                </td>
+            </tr>
+            <% tasks.forEach(function(task){ %>
+                <tr>
+                    <td>
+                        <div>
+                            <input type="text" name="taskId" value="<%= task.taskId %>" />
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="taskName" value="<%= task.taskName %>" />
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="taskDescription" value="<%= task.taskDescription %>" /> </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="startDate" value="<%= task.startDate %>" /> </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="endDate" value="<%= task.endDate %>" /> </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="text" name="owner" value="<%= task.owner %>" /> </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="submit" value="Update Task" style="width: 200px" />
+                        </div>
+                    </td>
+                </tr>
+                <% })%>
+        </table>
+    </form>
+</body>
+
+</html>

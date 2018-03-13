@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title><%=title %></title>
+</head>
+<body>
+    <form action="/tasks" method="post">
+        <div>
+            <label>Task ID:</label>
+            <input type="text" name="taskId" />
+        </div>
+        <div>
+            <label>Task Name:</label>
+            <input type="text" name="taskName" />
+        </div>
+        <div>
+            <label>Task Description:</label>
+            <input type="text" name="taskDescription" />
+        </div>
+        <div>
+            <label>Start Date:</label>
+            <input type="text" name="startDate" />
+        </div>
+        <div>
+            <label>End Date:</label>
+            <input type="text" name="endDate" />
+        </div>
+        <div>
+            <label>Owner:</label>
+            <input type="text" name="owner" />
+        </div>
+        <div>
+            <input type="submit" value="Create Task" />
+        </div>
+    </form>
+</body>
+</html>

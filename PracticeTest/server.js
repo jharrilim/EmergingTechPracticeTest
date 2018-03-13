@@ -1,0 +1,10 @@
+'use strict';
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+const port = process.env.PORT || 1337;
+const mongoose = require("./config/mongoose");
+const express = require("./config/express");
+const db = mongoose();
+const app = express();
+app.listen(port);
+console.log(`Server running at http://localhost:${port}/`);
+module.exports = app;
