@@ -8,7 +8,6 @@
 </head>
 
 <body>
-    <form method="post" action="/edit_task">
         <table align="center">
             <tr>
                 <td>
@@ -41,44 +40,53 @@
                         <label>Owner </label>
                     </div>
                 </td>
+                <td><div><a href="/">Home</a></div></td>
             </tr>
             <% tasks.forEach(function(task){ %>
-                <tr>
-                    <td>
-                        <div>
-                            <input type="text" name="taskId" value="<%= task.taskId %>" />
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="text" name="taskName" value="<%= task.taskName %>" />
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="text" name="taskDescription" value="<%= task.taskDescription %>" /> </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="text" name="startDate" value="<%= task.startDate %>" /> </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="text" name="endDate" value="<%= task.endDate %>" /> </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="text" name="owner" value="<%= task.owner %>" /> </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="submit" value="Update Task" style="width: 200px" />
-                        </div>
-                    </td>
-                </tr>
+                <form method="post" action="/edit_task">
+                    <tr>
+                        <td>
+                            <div>
+                                <input type="text" name="taskId" value="<%= task.taskId %>" />
+                                <input type="hidden" name="originalTaskId" value="<%= task.taskId %>" />
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="taskName" value="<%= task.taskName %>" />
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="taskDescription" value="<%= task.taskDescription %>" /> </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="startDate" value="<%= task.startDate %>" /> </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="endDate" value="<%= task.endDate %>" /> </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" name="owner" value="<%= task.owner %>" /> </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="submit" formaction="/list_tasks?_method=PUT" value="Update Task" style="width: 200px" />
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="submit" formaction="/list_tasks?_method=DELETE" value="Delete Task" style="width: 200px" />
+                            </div>
+                        </td>
+                    </tr>
+                </form>
                 <% })%>
         </table>
-    </form>
+        <% if(typeof msg != 'undefined') { %> <h2><%= msg %></h2> <% } %>
 </body>
 
 </html>

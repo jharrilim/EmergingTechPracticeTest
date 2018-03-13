@@ -22,9 +22,32 @@ module.exports.readTasks = (req, res, next) => {
         } else {
             res.render("tasks", {
                 title: "Tasks",
-                tasks: tasks
+                tasks: tasks,
+                msg: req.flash("msg")
             });
         }
+    });
+};
+
+module.exports.updateTask = (req, res, next) => {
+    Task.findOneAndUpdate({taskId: req.body.originalTaskId}, req.body, (err) => {
+        if (err) {
+            console.log("Error finding and updating stuff");
+            return next(err);
+        }
+        req.flash("msg", `Task "${req.body.originalTaskId}" updated successfully!`);
+        res.redirect("/list_tasks");
+    });
+};
+
+module.exports.deleteTask = (req, res, next) => {
+    Task.findOneAndRemove({ taskId: req.body.taskId }, req.body, (err) => {
+        if (err) {
+            console.log("Error finding and deleting stuff");
+            return next(err);
+        }
+        req.flash("msg", `Task "${req.body.originalTaskId}" deleted successfully!`);
+        res.redirect("/list_tasks");
     });
 };
 

@@ -5,6 +5,7 @@ const compress = require("compression");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const flash = require('connect-flash');
 
 module.exports = () => {
     const app = express();
@@ -16,7 +17,7 @@ module.exports = () => {
     }
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-    app.use(methodOverride());
+    app.use(methodOverride("_method"));
     app.use(session({
         saveUninitialized: true,
         resave: true,
@@ -25,6 +26,7 @@ module.exports = () => {
 
     app.set("views", "./app/views");
     app.set("view engine", "ejs");
+    app.use(flash());
     app.engine("html", require("ejs").renderFile);
 
     require("../app/routes/task.server.routes")(app);

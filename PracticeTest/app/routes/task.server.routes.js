@@ -6,4 +6,6 @@ module.exports = (app) => {
     app.route("/tasks").get(index.renderAdd);
     app.route("/tasks").post(tasks.createTask);
     app.route('/list_tasks').get(tasks.readTasks);
+    app.route('/list_tasks').put(tasks.updateTask);
+    app.route('/list_tasks').delete(tasks.deleteTask);
 };
